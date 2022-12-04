@@ -50,6 +50,66 @@
                                     <form method="post" action="query.php" enctype="multipart/form-data">
                                         <div class="card-body">
                                             <div class="form-group row mb-4">
+                                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                                                <div class="col-sm-12 col-md-7">
+                                                    <select class="form-control selectric" id="categorySelect" name="category" onchange="handleCategoryChange()">
+                                                        <?php
+                                                        $category = mysqli_query($con, "SELECT *  from category ") or die(mysqli_error($con));
+                                                        while ($rowcategory = mysqli_fetch_object($category)) {
+                                                        ?>
+                                                            <option><?php echo $rowcategory->categoryNAME; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-4">
+                                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Product Type</label>
+                                                <div class="col-sm-12 col-md-7">
+                                                    <select class="form-control selectric" name="suggestion" id="suggestionSelect" onchange="handleSuggestionChange()" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                                            <script defer>
+                                                let categoriesSelect;
+                                                let suggestionsSelect;
+                                                let priceElement;
+                                                let priceSuggestionElement;
+                                                let suggestions;
+
+                                                async function handleCategoryChange() {
+                                                    const suggestionsJSON = await $.ajax(`/knplfy/api/suggestions.php?categoryName=${categoriesSelect.value}`).promise();
+
+                                                    suggestions = JSON.parse(suggestionsJSON);
+
+                                                    let html = "";
+                                                    for (const suggestion of suggestions) {
+                                                        html += `<option value="${suggestion.product_suggestion_id}">${suggestion.product_suggestion_name}</option>`;
+                                                    }
+
+                                                    // suggestionsSelect.innerHTML = html;
+                                                    $("#suggestionSelect").html(html).selectric();
+
+
+                                                    handleSuggestionChange();
+                                                }
+
+                                                async function handleSuggestionChange() {
+                                                    const suggestion = suggestions.find(v => v.product_suggestion_id == suggestionsSelect.value);
+
+                                                    priceSuggestionElement.innerHTML = `The suggested price for this product is <b>₱${suggestion.product_suggestion_price}</b>`;
+                                                }
+
+                                                $(document).ready(() => {
+                                                    categoriesSelect = document.querySelector("#categorySelect");
+                                                    suggestionsSelect = document.querySelector("#suggestionSelect");
+                                                    priceElement = document.querySelector("#price");
+                                                    priceSuggestionElement = document.querySelector("#price-suggestion");
+
+                                                    handleCategoryChange();
+                                                })
+                                            </script>
+                                            <div class="form-group row mb-4">
                                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Item Name</label>
                                                 <div class="col-sm-12 col-md-7">
                                                     <input type="text" class="form-control" name="name">
@@ -64,7 +124,8 @@
                                             <div class="form-group row mb-4">
                                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Price</label>
                                                 <div class="col-sm-12 col-md-7">
-                                                    <input type="number" class="form-control" name="price">
+                                                    <input type="number" class="form-control" name="price" id="price">
+                                                    <small id="price-suggestion"></small>
                                                 </div>
                                             </div>
                                             <div class="form-group row mb-4">
@@ -85,19 +146,7 @@
                                                     <input type="number" class="form-control" name="sell" readonly="" value="0">
                                                 </div>
                                             </div>
-                                            <div class="form-group row mb-4">
-                                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
-                                                <div class="col-sm-12 col-md-7">
-                                                    <select class="form-control selectric" name="category">
-                                                        <?php
-                                                        $category = mysqli_query($con, "SELECT *  from category ") or die(mysqli_error($con));
-                                                        while ($rowcategory = mysqli_fetch_object($category)) {
-                                                        ?>
-                                                            <option><?php echo $rowcategory->categoryNAME; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                            </div>
+
                                             <div class="form-group row mb-4">
                                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description</label>
                                                 <div class="col-sm-12 col-md-7">

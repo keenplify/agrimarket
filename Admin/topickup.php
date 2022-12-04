@@ -29,15 +29,13 @@
                     <div class="section-header">
                         <!--  <h1>Pending Order</h1> -->
                         <div class="section-header-breadcrumb">
-                            <div class="breadcrumb-item active"><a href="#">Accepted Order</a></div>
+                            <div class="breadcrumb-item active"><a href="#">To Pick-Up Orders</a></div>
                         </div>
                     </div>
 
                     <div class="section-body">
 
-                        <h2 class="section-title">Accepted Order</h2>
-
-
+                        <h2 class="section-title">To Pick-Up Orders</h2>
 
                         <div class="row">
                             <div class="col-12">
@@ -50,10 +48,9 @@
 
                                                 <thead>
                                                     <tr>
-                                                        <th>Order ID</th>
-                                                        <th>Order Date </th>
-                                                        <th>Order Type</th>
+                                                        <th>Order Date</th>
                                                         <th colspan="2">Item Name</th>
+
                                                         <th>Quantity</th>
                                                         <th>Price</th>
                                                         <th>Total Amount</th>
@@ -64,15 +61,17 @@
                                                 <tbody>
                                                     <?php
                                                     $total = 0;
-                                                    $dashboard = mysqli_query($con, "SELECT *  from cart  group by orderID, orderSELLER  ") or die(mysqli_error($con));
+                                                    $dashboard = mysqli_query($con, "SELECT *  from cart group by orderID, orderSELLER  ") or die(mysqli_error($con));
                                                     while ($rowdashboard = mysqli_fetch_object($dashboard)) {
-                                                        if ($rowdashboard->orderID != 1 && $rowdashboard->cartSTATUS == '3') {
+                                                        if (
+                                                            $rowdashboard->orderID != 1 && $rowdashboard->cartSTATUS == '4' &&
+                                                            $rowdashboard->cartTYPE == 'Pick-Up'
+                                                        ) {
                                                     ?>
                                                             <tr style="">
                                                                 <!-- <td><?= $rowdashboard->orderID;  ?></td> -->
-                                                                <td><?= $rowdashboard->orderID;  ?></td>
                                                                 <td><?= $rowdashboard->cartDATE;  ?></td>
-                                                                <td><?= $rowdashboard->cartTYPE;  ?></td>
+
                                                                 <td colspan="2">
                                                                     <?php
                                                                     $details = mysqli_query($con, "SELECT cart.*,item.*  from cart, item where cart.itemID=item.itemID and orderID='$rowdashboard->orderID' ") or die(mysqli_error($con));
@@ -111,7 +110,7 @@
                                                                 <td>
                                                                     <?= $total; ?>
                                                                 </td>
-                                                                <td> <span class="badge badge-info">Accepted</span></td>
+                                                                <td> <span class="badge badge-info">To Pick-Up</span></td>
                                                                 <td class="text-center"><a href="vieworder.php?sellerID=<?= $rowdashboard->orderSELLER; ?>&orderid=<?= $rowdashboard->orderID;  ?>&accountID=<?= $rowdashboard->accountID;  ?>" class="btn btn-secondary">Detail</a></td>
                                                             </tr>
 

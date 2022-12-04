@@ -78,6 +78,39 @@ if (isset($_POST['addnotifications'])) {
     }
 }
 
+if (isset($_POST['addproductsuggestions'])) {
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $categoryId = $_POST['categoryId'];
+
+    $add = mysqli_query($con, "INSERT INTO product_suggestions (product_suggestion_name, product_suggestion_price, product_suggestion_category_id) VALUES ('$name', '$price', '$categoryId')");
+    if ($add) {
+        echo "<script type='text/javascript'>window.location.replace('product-suggestions.php');</script>";
+    }
+}
+
+if (isset($_POST['btneditsuggestion'])) {
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $categoryId = $_POST['categoryId'];
+
+    $add = mysqli_query($con, "UPDATE product_suggestions set product_suggestion_name = '$name', product_suggestion_price = '$price', product_suggestion_category_id = '$categoryId' WHERE product_suggestion_id='$id'") or die(mysqli_error($con));
+    
+    if ($add) {
+        echo "<script type='text/javascript'>window.location.replace('product-suggestions.php');</script>";
+    }
+}
+
+if (isset($_POST['deletesuggestion'])) {
+    $id = $_POST['id'];
+
+    $add = mysqli_query($con, "DELETE FROM product_suggestions WHERE product_suggestion_id='$id'");
+    if ($add) {
+        echo "<script type='text/javascript'>window.location.replace('product-suggestions.php');</script>";
+    }
+}
+
 if (isset($_POST['deletemasterlist'])) {
     $id = $_POST['id'];
 

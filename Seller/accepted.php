@@ -51,7 +51,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Order ID</th>
-                                                        <th>Order Date <?php echo $rowseller->sellerID; ?></th>
+                                                        <th>Order Date</th>
+                                                        <th>Order Type</th>
                                                         <th colspan="2">Item Name</th>
 
                                                         <th>Quantity</th>
@@ -69,9 +70,9 @@
                                                         if ($rowdashboard->orderID != 1 && $rowdashboard->cartSTATUS == '3' && $rowdashboard->orderSELLER == $rowseller->sellerID) {
                                                     ?>
                                                             <tr>
-                                                                <!-- <td><?= $rowdashboard->orderID;  ?></td> -->
                                                                 <td><?= $rowdashboard->orderID;  ?></td>
                                                                 <td><?= $rowdashboard->cartDATE;  ?></td>
+                                                                <td><?= $rowdashboard->cartTYPE;  ?></td>
 
                                                                 <td colspan="2">
                                                                     <?php

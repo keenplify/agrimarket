@@ -22,13 +22,15 @@
 
             <li><a class="nav-link" href="pending.php"><i class="far fa-square"></i> <span>Pending</span></a></li>
             <li><a class="nav-link" href="accepted.php"><i class="far fa-square"></i> <span>Accepted</span></a></li>
-            <li class="menu-header">Cash On Delivery</li>
+            <li class="menu-header">Delivery</li>
             <li><a class="nav-link" href="shipped.php"><i class="far fa-square"></i> <span>Shipped</span></a></li>
             <li><a class="nav-link" href="Delivered.php"><i class="far fa-square"></i> <span>Delivered</span></a></li>
             <li class="menu-header">Pick-Up</li>
-            <li><a class="nav-link" href="pickup.php"><i class="far fa-square"></i> <span>Pick-Up</span></a></li>
+            <li><a class="nav-link" href="topickup.php"><i class="far fa-square"></i> <span>To Pick-Up</span></a></li>
+            <li><a class="nav-link" href="pickupreceived.php"><i class="far fa-square"></i> <span>Received</span></a></li>
             <li class="menu-header">Products</li>
             <li><a class="nav-link" href="product.php"><i class="far fa-square"></i> <span>Products List</span></a></li>
+            <li><a class="nav-link" href="product-suggestions.php"><i class="far fa-square"></i> <span>Product Suggestions</span></a></li>
 
             <li class="menu-header">Users</li>
             <li><a class="nav-link" href="customer.php"><i class="far fa-square"></i> <span>Customer</span></a></li>

@@ -12,7 +12,10 @@ if (isset($_GET['orderid']) ? $_GET['orderid'] : '') {
 <html lang="en">
 
 <!-- -->
-<?php include('1head.php'); ?>
+<?php 
+include('1head.php'); 
+include('../knplfy/includes.php');
+?>
 
 <body class="layout-4">
     <!-- Page Loader -->
@@ -80,6 +83,12 @@ if (isset($_GET['orderid']) ? $_GET['orderid'] : '') {
                                                     </div>
                                                 </div>
                                                 <div class="row">
+                                                    <div class="col-md-6">
+                                                        <address>
+                                                            <strong>Type:</strong><br>
+                                                            <?= $rowslide12->cartTYPE ?>
+                                                        </address>
+                                                    </div>
                                                     <div class="col-md-6 text-md-right">
                                                         <address>
                                                             <strong>Order Date:</strong><br>
@@ -93,7 +102,7 @@ if (isset($_GET['orderid']) ? $_GET['orderid'] : '') {
                                                                     <span class="badge badge-info">Accepted</span>
                                                                 <?php } elseif ($rowslide12->cartSTATUS == 4) {  ?>
                                                                     <span class="badge badge-warning">
-                                                                        <?= $rowslide12->cartTYPE == 'Delivery' ? 'Shipped' : 'To Pick-Up'?>
+                                                                        <?= $rowslide12->cartTYPE == 'Delivery' ? 'Shipped' : 'To Pick-Up' ?>
                                                                     </span>
                                                                 <?php } elseif ($rowslide12->cartSTATUS == 5) {  ?>
                                                                     <span class="badge badge-success">Delivered</span>
@@ -128,14 +137,10 @@ if (isset($_GET['orderid']) ? $_GET['orderid'] : '') {
                                                         $i = 0;
                                                         $slide1 = mysqli_query($con, "SELECT cart.*,item.* from cart,item where cart.itemID = item.itemID and cart.accountID='$accountID2' ") or die(mysqli_error($con));
                                                         while ($rowslide1 = mysqli_fetch_object($slide1)) {
-
                                                             if ($rowslide1->orderID == $od && $rowslide1->orderSELLER == $sellerID) {
                                                                 $i++;
                                                                 $sumq = $rowslide1->itemPRICE * $rowslide1->cartCOUNT;
                                                                 $sumqt = $sumqt + $sumq;
-
-
-
                                                         ?>
                                                                 <tr>
                                                                     <td><?php echo $i; ?></td>
@@ -161,40 +166,34 @@ if (isset($_GET['orderid']) ? $_GET['orderid'] : '') {
                                                             <p>The customer has not made any reviews yet.</p>
                                                         <?php } else { ?>
                                                             <div class="alert alert-dark" role="alert">
+                                                                <div class="d-flex align-items-center mb-2" style="pointer-events: none;">
+                                                                    <b class="mr-1">Rating:</b> 
+                                                                    <span class="mr-2"><?= $rowslide12->cartREVIEWRATING?>/5</span>
+                                                                    <div id='rating-view'></div>
+                                                                </div>
+                                                                
+                                                                <script>
+                                                                var myRating = jSuites.rating(document.getElementById('rating-view'), {
+                                                                    value: <?= $rowslide12->cartREVIEWRATING?>,
+                                                                    tooltip: [ 'Very bad', 'Bad', 'Average', 'Good', 'Very good' ],
+                                                                });
+                                                                </script>
                                                                 <?php echo ($rowslide12->cartREVIEW) ?>
                                                             </div>
                                                         <?php } ?>
                                                     </div>
 
-                                                    <?php if ($rowslide12->cartPAYMENTTYPE == '1') { ?>
-                                                        <div class="col-lg-4 text-right">
-                                                            <div class="invoice-detail-item">
-                                                                <div class="invoice-detail-name">Subtotal</div>
-                                                                <div class="invoice-detail-value">P<?php echo $sumqt; ?>.00</div>
-                                                            </div>
-                                                            <div class="invoice-detail-item">
-                                                                <div class="invoice-detail-name">Shipping</div>
-                                                                <div class="invoice-detail-value">Shipping Fee: +</strong>50</div>
-                                                            </div>
-                                                            <hr class="mt-2 mb-2">
-                                                            <div class="invoice-detail-item">
-                                                                <div class="invoice-detail-name">Total</div>
-                                                                <div class="invoice-detail-value invoice-detail-value-lg">P<?php echo $sumqt + 50; ?>.00</div>
-                                                            </div>
+                                                    <div class="col-lg-4 text-right">
+                                                        <div class="invoice-detail-item">
+                                                            <div class="invoice-detail-name">Subtotal</div>
+                                                            <div class="invoice-detail-value">P<?php echo $sumqt; ?>.00</div>
                                                         </div>
-                                                    <?php } else { ?>
-                                                        <div class="col-lg-4 text-right">
-                                                            <div class="invoice-detail-item">
-                                                                <div class="invoice-detail-name">Subtotal</div>
-                                                                <div class="invoice-detail-value">P<?php echo $sumqt; ?>.00</div>
-                                                            </div>
-                                                            <hr class="mt-2 mb-2">
-                                                            <div class="invoice-detail-item">
-                                                                <div class="invoice-detail-name">Total</div>
-                                                                <div class="invoice-detail-value invoice-detail-value-lg">P<?php echo $sumqt; ?>.00</div>
-                                                            </div>
+                                                        <hr class="mt-2 mb-2">
+                                                        <div class="invoice-detail-item">
+                                                            <div class="invoice-detail-name">Total</div>
+                                                            <div class="invoice-detail-value invoice-detail-value-lg">P<?php echo $sumqt; ?>.00</div>
                                                         </div>
-                                                    <?php } ?>
+                                                    </div>
 
 
                                                 </div>
@@ -207,7 +206,7 @@ if (isset($_GET['orderid']) ? $_GET['orderid'] : '') {
                                             <?php if ($rowslide12->cartSTATUS == 3) {
                                             ?>
                                                 <button class="btn btn-primary" data-toggle="modal" data-target="#update-status-from-3">
-                                                    <?=($rowslide12->cartTYPE == 'Delivery') ? 'Mark as Delivering' : 'Mark as To Pick-Up' ?>
+                                                    <?= ($rowslide12->cartTYPE == 'Delivery') ? 'Mark as Delivering' : 'Mark as To Pick-Up' ?>
                                                 </button>
                                             <?php } ?>
                                             <!--  <button class="btn btn-primary btn-icon icon-left"><i class="fas fa-credit-card"></i> Process Payment</button>
@@ -322,17 +321,17 @@ var marker = map.addMarker({
             </div>
             <form method="post" action="query.php" enctype="multipart/form-data">
 
-            <div class="modal-body">
-                <p>Please upload a picture of the product to change the order status.</p>
-                <input type="file" name="image" required>
-            </div>
-            <div class="modal-footer text-center">
-                <input type="" name="orderID" value="<?= $orderid; ?>" hidden>
-                <input type="" name="sellerID" value="<?= $sellerID; ?>" hidden>
-                <input type="" name="accountID" value="<?= $accountID2; ?>" hidden>
-                <button type="submit" name="btnupdatestatusfrom3" class="btn btn-success btn-lg  waves-effect">Confirm</button>
-                <a href="" class="btn btn-danger btn-lg waves-effect" data-dismiss="modal">No</a>
-            </div>
+                <div class="modal-body">
+                    <p>Please upload a picture of the product to change the order status.</p>
+                    <input type="file" name="image" required>
+                </div>
+                <div class="modal-footer text-center">
+                    <input type="" name="orderID" value="<?= $orderid; ?>" hidden>
+                    <input type="" name="sellerID" value="<?= $sellerID; ?>" hidden>
+                    <input type="" name="accountID" value="<?= $accountID2; ?>" hidden>
+                    <button type="submit" name="btnupdatestatusfrom3" class="btn btn-success btn-lg  waves-effect">Confirm</button>
+                    <a href="" class="btn btn-danger btn-lg waves-effect" data-dismiss="modal">No</a>
+                </div>
             </form>
         </div>
     </div>
