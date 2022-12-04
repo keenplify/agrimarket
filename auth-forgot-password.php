@@ -18,10 +18,9 @@ if (isset($_POST["user"]) && isset($_POST["securityQuestion"]) && isset($_POST["
     $query = "
     SELECT * FROM account WHERE
     user = '$user' AND
-    LOWER(securityquestion) LIKE '%$securityQuestion%' AND
-    LOWER(securityanswer) LIKE '%$securityAnswer%'
+    LOWER(securityquestion) = '$securityQuestion' AND
+    LOWER(securityanswer) = '$securityAnswer'
     ";
-    echo $query;
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
     $account = mysqli_fetch_assoc($result);
 

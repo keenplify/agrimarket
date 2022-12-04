@@ -5,6 +5,12 @@ if (isset($_GET['itemid']) ? $_GET['itemid'] : '') {
     $itemid = $_GET['itemid'];
     $itemlist = mysqli_query($con, "SELECT * from item where itemID = '$itemid'") or die(mysqli_error($con));
     $rows = mysqli_fetch_object($itemlist);
+
+    $sellerId = $rows->itemSELLER;
+    $accountId = $row->accountID;
+
+    mysqli_query($con, "INSERT INTO visitors (visitor_seller_id, visitor_account_id) VALUES ('$sellerId', '$accountId')");
+    $visitorId = $con->insert_id;
 } else {
     echo "<script type='tex  <?php include_once('knplfy/includes.php') ?>
          /javascript'>window.location.replace('errors-404.php');</script>";
@@ -91,7 +97,7 @@ $rowseller = mysqli_fetch_object($sellers);
                                 </center>
 
                                 <form method="post" action="query.php" id="form">
-
+                                    <input type="hidden" name="visitorId" value="<?= $visitorId ?>">
                                     <p>
                                         <b>Full Address:</b> <?php echo $rowseller->selleraddress;  ?><br>
                                         <b>Category:</b> <?php echo $rows->itemCATEGORY;  ?><br>

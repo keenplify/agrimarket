@@ -1,3 +1,4 @@
+
 <?php include('../1connection.php'); ?>
 <?php
 if (isset($_POST['updateimage'])) {
@@ -70,6 +71,8 @@ if (isset($_POST['btnitemadds'])) {
     $sellerID = $_POST['sellerID'];
     $lat = $_POST['lat'];
     $long = $_POST['long'];
+    $suggestion = $_POST['suggestion'];
+
     if (isset($_FILES["imageupload"]['name']) && $_FILES["imageupload"]['name'] != '') {
         $fileName = $_FILES["imageupload"]['name'];
         $tmpName  = $_FILES["imageupload"]['tmp_name'];
@@ -109,7 +112,8 @@ if (isset($_POST['btnitemadds'])) {
                 itemLATITUDE,
                 itemIMG,
                 itemMOQ,
-                itemMAXOQ
+                itemMAXOQ,
+                itemPRODUCTTYPE
             ) VALUES(
                 '$name',
                 '$quantity',            
@@ -122,7 +126,8 @@ if (isset($_POST['btnitemadds'])) {
                 '$lat',
                 '$final_filename',
                 '$moq',
-                $maxoq
+                $maxoq,
+                '$suggestion'
             ) ");
 
     if ($add) {
@@ -296,6 +301,7 @@ if (isset($_POST['btnacceptorder'])) {
 }
 
 if (isset($_POST['btnupdatestatusfrom3'])) {
+    
     $orderID = $_POST['orderID'];
     $accountID = $_POST['accountID'];
     $sellerID = $_POST['sellerID'];
@@ -305,6 +311,7 @@ if (isset($_POST['btnupdatestatusfrom3'])) {
     $txtdate = date('F d, Y h:i:sa', time());
 
     if (empty($orderID) || empty($accountID)  || empty($sellerID) || empty($image)) {
+        echo 'yes';
         $message = 'Updating status failed, Some info is missing!';
     } else {
         $fileName = $image['name'];
@@ -344,8 +351,6 @@ if (isset($_POST['btnupdatestatusfrom3'])) {
             WHERE 
                 orderID='$orderID' 
             ") or die(mysqli_error($con));
-        print_r($update);
-        return;
 
         if ($update) {
             $insertNOTIFICATION = mysqli_query($con, "INSERT into notification (
@@ -360,7 +365,7 @@ if (isset($_POST['btnupdatestatusfrom3'])) {
                     '$txtdate'
                 ) ");
 
-            $location = ($order->cartTYPE == 'Delivery') ? 'pickup' : 'shipped';
+            $location = ($order->cartTYPE == 'Delivery') ? 'shipped' : 'topickup';
             echo "<script type='text/javascript'>window.location.replace('$location.php');alert('$message');</script>";
         } else {
             echo "<script type='text/javascript'>window.location.replace('accepted.php');alert('There is an error in the system, Please  try again later!');</script>";
@@ -439,9 +444,7 @@ if (isset($_POST['btndelivery'])) {
                 '$txtdate'
             ) ");
 }
-
 if (isset($_POST['btnrecieved'])) {
-
     $orderID = $_POST['orderID'];
     $accountID = $_POST['accountID'];
     $sellerID = $_POST['sellerID'];
@@ -451,15 +454,14 @@ if (isset($_POST['btnrecieved'])) {
     $orderIDmodified = $orderID . "-" . $accountID . "-" . $sellerID;
 
     if (empty($orderID) || empty($accountID)  || empty($sellerID)) {
-        $message = 'Delivery order failed, Some info is missing!';
+        $message = 'Pickup order failed, Some info is missing!';
     } else {
-        $message = 'You Have Successfully change status from Delivery to Delivered the Order with ID#: ' . $orderIDmodified;
+        $message = 'You Have Successfully change status from To Pickup to Received the Order with ID#: ' . $orderIDmodified;
 
         $seller = mysqli_query($con, "SELECT seller.* from seller where sellerID = '$sellerID'") or die(mysqli_error($con));
         $rowseller = mysqli_fetch_object($seller);
 
-        $notification = 'Your order ID' . $orderID . 'is change the status by seller from Delivery to Delivered!';
-
+        $notification = 'Your order ID' . $orderID . 'is change the status by seller from To Pickup to Received!';
 
         $update = mysqli_query($con, "UPDATE cart set 
                 cartSTATUS = '5',
@@ -693,6 +695,7 @@ if (isset($_POST['btnupdatesproducts'])) {
     $description = $_POST['description'];
     $moq = $_POST['moq'];
     $maxoq = empty($_POST['maxoq']) ? 'NULL' : "'". $_POST['maxoq'] ."'";
+    $suggestion = $_POST['suggestion'];
 
     date_default_timezone_set('Asia/Manila');
     $txtdate = date('F d, Y h:i:sa', time());
@@ -705,7 +708,8 @@ if (isset($_POST['btnupdatesproducts'])) {
                 itemCATEGORY = '$category',
                 itemDESCRIPTION = '$description',
                 itemMOQ = '$moq',
-                itemMAXOQ = $maxoq 
+                itemMAXOQ = $maxoq,
+                itemPRODUCTTYPE = '$suggestion'
             WHERE 
                 itemID='$id'
             ") or die(mysqli_error($con));

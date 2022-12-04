@@ -5,8 +5,8 @@
 
 <?php
 date_default_timezone_set("Asia/Hong_Kong");
-$startAt = empty($_GET["startAt"]) ? date_create($_GET["startAt"]) : date_create()->modify('-7 days');
-$endAt = empty($_GET["endAt"]) ? date_create($_GET["endAt"]) : date_create();
+$startAt = !empty($_GET["startAt"]) ? date_create($_GET["startAt"]) : date_create()->modify('-7 days');
+$endAt = !empty($_GET["endAt"]) ? date_create($_GET["endAt"]) : date_create();
 ?>
 
 <!-- -->
@@ -48,6 +48,11 @@ $endAt = empty($_GET["endAt"]) ? date_create($_GET["endAt"]) : date_create();
                   <?= $notification->text ?>
                 </div>
               <?php } ?>
+            </div>
+            <div class="alert alert-info">
+              <p>Please update your product prices daily to stay up to date with the suggested prices.</p>
+              <hr>
+              <a href="./product.php" class="btn btn-secondary" style="color:black">Go to Products</a>
             </div>
             <form class="row">
               <div class="col-md-6">

@@ -305,6 +305,7 @@ var marker = map.addMarker({
                     <input type="" name="orderID" value="<?= $orderid; ?>" hidden>
                     <input type="" name="sellerID" value="<?= $sellerID; ?>" hidden>
                     <input type="" name="accountID" value="<?= $accountID2; ?>" hidden>
+                    <input type="" name="btnrecieved" hidden>
                     <button type="submit" name="btnrecieved" class="btn btn-success btn-lg  waves-effect">Recieved</button>
                 </form>
                 <a href="" class="btn btn-danger btn-lg waves-effect" data-dismiss="modal">No</a>

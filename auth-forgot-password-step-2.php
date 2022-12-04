@@ -27,7 +27,7 @@ if (isset($_POST["user"]) && isset($_POST["securityQuestion"]) && isset($_POST["
 
     if ($account) {
         $id = $account['accountID'];
-        header("Location: ./auth-forgot-password-step-2.php?id=$id");
+        header("Location: /");
     } else {
         echo "<script>alert('User not found')</script>";
     }

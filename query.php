@@ -21,12 +21,11 @@ if (isset($_POST['btnlogin'])) {
 }
 
 if (isset($_POST['btnaddtocart'])) {
-
-
     $quant = $_POST['quant'];
     $itemID = $_POST['itemID'];
     $accountID = $_POST['accountID'];
     $sellerID = $_POST['sellerID'];
+    $visitorID = $_POST['visitorId'];
     date_default_timezone_set('Asia/Manila');
     $date = date('F d, Y h:i:sa', time());
 
@@ -34,8 +33,11 @@ if (isset($_POST['btnaddtocart'])) {
     $rowitem = mysqli_fetch_object($item);
     $message = $rowitem->itemNAME . " is added to your cart.";
     $status = '2';
+
+    mysqli_query($con, "UPDATE visitors SET visitor_is_converted = '1' WHERE visitor_id = '$visitorID'");
     $minus = mysqli_query($con, "UPDATE item set itemQUANTITY = itemQUANTITY-'$quant'  WHERE itemID='$itemID'");
     $plus = mysqli_query($con, "UPDATE item set  itemTOTALSELL = itemTOTALSELL + '$quant' WHERE itemID='$itemID'");
+    
     $addto = mysqli_query($con, "INSERT into cart ( 
                 cartCOUNT,
                 accountID,
@@ -340,7 +342,7 @@ if (isset($_POST["btnforgotpasswordfinalize"])) {
 
         $editprofile = mysqli_query($con, "UPDATE account set pass = '$password' WHERE accountID='$accountId'") or die(mysqli_error($con));
     }
-    echo "<script type='text/javascript'>window.location.replace('/auth-forgot-password-step-2.php');alert('$message');</script>";
+    echo "<script type='text/javascript'>window.location.replace('/login.php');alert('$message');</script>";
 }
 
 if (isset($_POST['btnupdatesecurity'])) {

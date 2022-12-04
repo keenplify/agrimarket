@@ -255,6 +255,24 @@ $accountID2 = $row->accountID;
                                                 </li>
                                             </ul>
                                         </div>
+                                        <div class="d-flex">
+                                            <?php if (!is_null($rowslide12->cartDELIVERYIMAGE)) { ?>
+                                                <div class="card p-2 mx-2"  style="width: 19rem; background-color: white;">
+                                                    <img class="card-img-top" src="/img/deliveryproof/<?= $rowslide12->cartDELIVERYIMAGE?>" style="object-fit: cover;width: 18rem;height: 18rem;">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Proof of Delivery from Seller</h6>
+                                                    </div>
+                                                </div>
+                                            <?php }?>
+                                            <?php if (!is_null($rowslide12->cartRECEIVEDIMAGE)) { ?>
+                                                <div class="card p-2 mx-2"  style="width: 19rem; background-color: white;">
+                                                    <img class="card-img-top" src="/img/deliveredproof/<?= $rowslide12->cartRECEIVEDIMAGE?>" style="object-fit: cover;width: 18rem;height: 18rem;">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Proof of Received/Delivered</h6>
+                                                    </div>
+                                                </div>
+                                            <?php }?>
+                                        </div>
                                     </div>
                                 </div>
                     </div>

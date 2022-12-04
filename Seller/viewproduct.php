@@ -3,7 +3,7 @@
 <?php
 if (isset($_GET['itemid']) ? $_GET['itemid'] : '') {
     $itemid = $_GET['itemid'];
-    $itemlist = mysqli_query($con, "SELECT * from item where itemID = '$itemid'") or die(mysqli_error($con));
+    $itemlist = mysqli_query($con, "SELECT * from item LEFT JOIN product_suggestions ON product_suggestion_id = itemPRODUCTTYPE where itemID = '$itemid'") or die(mysqli_error($con));
     $row = mysqli_fetch_object($itemlist);
 } else {
     echo "<script type='text/javascript'>window.location.replace('errors-404.php');</script>";
@@ -53,7 +53,7 @@ if (isset($_GET['itemid']) ? $_GET['itemid'] : '') {
                                                 <div class="chocolat-parent">
 
                                                     <a href="../img/product/<?php if ($row->itemIMG == NULL) { ?>null.png<?php } else {
-                                                                                                                        echo $row->itemIMG; ?><?php } ?>" class="chocolat-image" title="Just an example">
+                                                                                                                            echo $row->itemIMG; ?><?php } ?>" class="chocolat-image" title="Just an example">
                                                         <div data-crop-image="">
                                                             <img alt="image" src="../img/product/<?php echo $row->itemIMG;  ?>" style="border:black solid  2px; width: 80%; height: auto;margin-top: 10px;" class="img-fluid">
                                                         </div>
@@ -152,9 +152,11 @@ if (isset($_GET['itemid']) ? $_GET['itemid'] : '') {
     <!-- <script src="js/page/gmaps-draggable-marker.js"></script> -->
 
     <!-- JS Libraies -->
+    
     <script src="assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
     <script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
     <script src="assets/modules/summernote/summernote-bs4.js"></script>
+    
     <!-- Template JS File -->
     <script src="js/scripts.js"></script>
     <script src="js/custom.js"></script>
@@ -309,27 +311,76 @@ if (isset($_GET['itemid']) ? $_GET['itemid'] : '') {
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Price</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="number" class="form-control" name="price" value="<?php echo $row->itemPRICE;  ?>">
+                                <small id="price-suggestion">The suggested price for this product is <b>₱<?= $row->product_suggestion_price ?></b></small>
                             </div>
                         </div>
 
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
                             <div class="col-sm-12 col-md-7">
-                                <select class="form-control selectric" name="category">
+                                <select class="form-control selectric" name="category" id="categorySelect" onchange="handleCategoryChange()">
                                     <option><?php echo $row->itemCATEGORY;  ?></option>
                                     <?php
                                     $category = mysqli_query($con, "SELECT *  from category ") or die(mysqli_error($con));
                                     while ($rowcategory = mysqli_fetch_object($category)) {
-                                    ?>
-                                        <option><?php echo $rowcategory->categoryNAME; ?></option>
-                                    <?php } ?>
+                                        if ($row->itemCATEGORY !== $rowcategory->categoryNAME){
+                                            ?> <option><?php echo $rowcategory->categoryNAME; ?></option> <?php
+                                        }
+                                    } ?>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Product Type</label>
+                            <div class="col-sm-12 col-md-7">
+                                <select class="form-control selectric" name="suggestion" id="suggestionSelect" onchange="handleSuggestionChange()" required>
+                                <?php if (!is_null($row->itemPRODUCTTYPE)) {?>
+                                    <option value="<?=$row->itemPRODUCTTYPE ?>"><?= $row->product_suggestion_name?></option>
+                                <?php }?>
+                            </select>
+                            </div>
+                        </div>
+
+                        <script defer>
+                            let categoriesSelect;
+                            let suggestionsSelect;
+                            let priceSuggestionElement;
+                            let suggestions;
+
+                            async function handleCategoryChange() {
+                                const suggestionsJSON = await $.ajax(`/knplfy/api/suggestions.php?categoryName=${categoriesSelect.value}`).promise();
+
+                                suggestions = JSON.parse(suggestionsJSON);
+
+                                let html = "";
+                                for (const suggestion of suggestions) {
+                                    html += `<option value="${suggestion.product_suggestion_id}">${suggestion.product_suggestion_name}</option>`;
+                                }
+
+                                // suggestionsSelect.innerHTML = html;
+                                $("#suggestionSelect").html(html);
+
+                                handleSuggestionChange();
+                            }
+
+                            async function handleSuggestionChange() {
+                                const suggestion = suggestions.find(v => v.product_suggestion_id == suggestionsSelect.value);
+
+                                priceSuggestionElement.innerHTML = `The suggested price for this product is <b>₱${suggestion.product_suggestion_price}</b>`;
+                            }
+
+                            $(document).ready(() => {
+                                categoriesSelect = document.querySelector("#categorySelect");
+                                suggestionsSelect = document.querySelector("#suggestionSelect");
+                                priceSuggestionElement = document.querySelector("#price-suggestion");
+                            })
+                        </script>
+
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description</label>
                             <div class="col-sm-12 col-md-7">
-                                <textarea class="summernote-simple" style="border: solid 1px black;" name="description">
+                                <textarea class="summernote-simple" id="description" style="border: solid 1px black;" name="description">
                                     <?= $row->itemDESCRIPTION;  ?>
                                 </textarea>
                             </div>

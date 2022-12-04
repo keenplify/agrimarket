@@ -9,6 +9,7 @@ if (isset($_SESSION['seller'])) {
     //unset($_SESSION['cid']);
     unset($_SESSION['seller']);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
