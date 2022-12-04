@@ -1,0 +1,5 @@
+{
+    "require": {
+        "lucascavalcante/fuzzy-search": "^1.0"
+    }
+}

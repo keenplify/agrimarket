@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "aec3136bd6d6024284dfb1b529ec6c7f",
+    "packages": [
+        {
+            "name": "lucascavalcante/fuzzy-search",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lucascavalcante/fuzzy-search.git",
+                "reference": "4f904078378f0f7e3cc6776f95db4e14bd781c3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lucascavalcante/fuzzy-search/zipball/4f904078378f0f7e3cc6776f95db4e14bd781c3a",
+                "reference": "4f904078378f0f7e3cc6776f95db4e14bd781c3a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FuzzySearch\\": "src/FuzzySearch"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lucas Cavalcante",
+                    "email": "lucascavalcante@gmail.com"
+                }
+            ],
+            "description": "A PHP library that turns easy fuzzy string searching",
+            "keywords": [
+                "fuzzy",
+                "matching",
+                "search",
+                "searching",
+                "string"
+            ],
+            "support": {
+                "issues": "https://github.com/lucascavalcante/fuzzy-search/issues",
+                "source": "https://github.com/lucascavalcante/fuzzy-search/tree/v1.0.1"
+            },
+            "time": "2019-06-28T13:13:19+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
