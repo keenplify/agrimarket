@@ -171,16 +171,16 @@ if (isset($_SESSION['seller'])) {
 
             </div>
           </div>
-          <div class="mt-5 text-muted text-center">
-            You have an account? <a href="login.php">Login</a>
-          </div>
-          <div class="simple-footer">
-            Copyright &copy; 2022
-          </div>
         </div>
       </div>
   </div>
   </section>
+  <div class="text-white text-center">
+            You have an account? <a href="login.php">Login</a>
+          </div>
+          <div class="simple-footer text-white">
+            Copyright &copy; 2022
+          </div>
   </div>
 
   <!-- General JS Scripts -->

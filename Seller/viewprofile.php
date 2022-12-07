@@ -107,10 +107,10 @@
                                     <div class="card-body pb-0">
                                         <div class="row">
 
-                                            <button data-toggle="modal" data-target="#Pick" class="btn btn-primary" style="margin-right: 15px; margin-bottom: 15px; width: 150px;">Edit Image</button>
-                                            <button data-toggle="modal" data-target="#Info" class="btn btn-primary" style="margin-right: 15px; margin-bottom: 15px; width: 150px;">Edit Info</button>
+                                            <button data-toggle="modal" data-bs-toggle="modal" data-bs-target="#Pick" data-target="#Pick" class="btn btn-primary" style="margin-right: 15px; margin-bottom: 15px; width: 150px;">Edit Image</button>
+                                            <button data-toggle="modal" data-bs-toggle="modal" data-bs-target="#Info" data-target="#Info" class="btn btn-primary" style="margin-right: 15px; margin-bottom: 15px; width: 150px;">Edit Info</button>
                                             <!--  <a href="editaddress.php?sellerid=<?= $rowseller->sellerID ?>"  class="btn btn-primary" style="margin-right: 15px; margin-bottom: 15px; width: 150px;">Edit Address</a> -->
-                                            <button data-toggle="modal" data-target="#Sec" class="btn btn-primary" style="margin-right: 15px; margin-bottom:  15px; width: 150px;">Edit Security</button>
+                                            <button data-toggle="modal" data-bs-toggle="modal" data-bs-target="#Sec" data-target="#Sec" class="btn btn-primary" style="margin-right: 15px; margin-bottom:  15px; width: 150px;">Edit Security</button>
                                         </div>
                                     </div>
                                 </div>
@@ -403,3 +403,4 @@
     })
 </script>
 <script src="/knplfy/draggable.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
