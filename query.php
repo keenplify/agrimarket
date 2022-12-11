@@ -1,6 +1,6 @@
 <?php
 include('1connection.php');
-
+include('./knplfy/utils.php');
 
 if (isset($_POST['btnlogin'])) {
 
@@ -34,29 +34,44 @@ if (isset($_POST['btnaddtocart'])) {
     $message = $rowitem->itemNAME . " is added to your cart.";
     $status = '2';
 
+    $query = "INSERT into cart ( 
+        cartCOUNT,
+        accountID,
+        itemID,
+        orderID,
+        cartDATE, 
+        cartPENDING, 
+        orderSELLER,
+        cartSTATUS
+    ) VALUES(
+        '$quant',
+        '$accountID',
+        '$itemID',
+        '1',
+        '$date',
+        '$date',
+        '$sellerID',
+        '$status'
+    )";
+
+    // Check if item is already in cart. If yes, add to quantity instead of adding new cart item.
+    $oldCartQuery = mysqli_query($con, "SELECT * from cart WHERE itemID = '$itemID' AND accountId = '$accountID' AND cartSTATUS = '2'");
+    $oldCart = mysqli_fetch_object($oldCartQuery);
+
+    if ($oldCart) {
+        $clamped = clamp(
+            $oldCart->cartCOUNT + $quant,
+            $rowitem->itemMOQ,
+            !empty($rowitem->itemMAXOQ) ? $rowitem->itemMAXOQ : $rowitem->itemQUANTITY
+        );
+        $query = "UPDATE cart SET cartCOUNT = $clamped";
+    }
+
     mysqli_query($con, "UPDATE visitors SET visitor_is_converted = '1' WHERE visitor_id = '$visitorID'");
     $minus = mysqli_query($con, "UPDATE item set itemQUANTITY = itemQUANTITY-'$quant'  WHERE itemID='$itemID'");
     $plus = mysqli_query($con, "UPDATE item set  itemTOTALSELL = itemTOTALSELL + '$quant' WHERE itemID='$itemID'");
     
-    $addto = mysqli_query($con, "INSERT into cart ( 
-                cartCOUNT,
-                accountID,
-                itemID,
-                orderID,
-                cartDATE, 
-                cartPENDING, 
-                orderSELLER,
-                cartSTATUS
-            ) VALUES(
-                '$quant',
-                '$accountID',
-                '$itemID',
-                '1',
-                '$date',
-                '$date',
-                '$sellerID',
-                '$status'
-            )") or die(mysqli_error($con));
+    $addto = mysqli_query($con, $query) or die(mysqli_error($con));
 
     $insertactivitylog1 = mysqli_query($con, "INSERT into activitylog (
                 activitylogUSERID,  
@@ -177,6 +192,7 @@ if (isset($_POST['btnregister'])) {
         }
     } catch (Exception $e) {
         $message = $e->getMessage();
+        if (str_contains($message, 'Duplicate')) $message = 'This user already exists.';
         echo "<script type='text/javascript'>window.location.replace('register.php');alert(`$message`)</script>";
     }
 }

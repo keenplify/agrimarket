@@ -25,7 +25,7 @@
             <div class="main-content">
 
                 <section class="section">
-                    <div>
+                    <!-- <div>
                         <?php
                         $notificationQuery = mysqli_query($con, "SELECT *  from notifications WHERE expire_at > NOW()") or die(mysqli_error($con));
                         while ($notification = mysqli_fetch_object($notificationQuery)) {
@@ -34,7 +34,7 @@
                             <?= $notification->text?>
                         </div>
                         <?php }?>
-                    </div>
+                    </div> -->
 
                     <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                         <!-- <ol class="carousel-indicators">

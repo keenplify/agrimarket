@@ -679,7 +679,7 @@ if (isset($_POST['btncreateaccount'])) {
             echo "<script type='text/javascript'>window.location.replace('login.php');alert('$message');</script>";
         } catch (Exception $e) {
             $message = $e->getMessage();
-           
+            if (str_contains($message, 'Duplicate')) $message = 'This user already exists.';
             echo "<script type='text/javascript'>window.location.replace('register.php');alert(`$message`)</script>";
         }
     }
