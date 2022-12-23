@@ -3,13 +3,13 @@
  
 /* Database Config */
 //host
-$host="localhost";
+$host="sql605.main-hosting.eu";
 //username
-$username="root";
+$username="u941863348_agrimarket";
 //password
-$pass="*8*S5Kz2drNc";
+$pass="5mJL4pSSeBRDe";
 //database name
-$db="geofarmer";	
+$db="u941863348_agrimarket";	
 
 /* End Config */
 
