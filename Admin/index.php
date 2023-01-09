@@ -83,7 +83,7 @@
                       <i class="fas fa-shopping-bag"></i>
                     </div>
                     <?php include('../autoload/admin/4autoloadadmindashboard4.php'); ?>
-                    <h4><?php echo $sumqt; ?></h4>
+                    <h4>₱<?php echo $sumqt; ?></h4>
                     <div class="card-description">Total Sales</div>
 
                   </div>
@@ -117,7 +117,11 @@
                       function insertGroup(groups, group) {
                         const oldGroup = groups.find(v => v.title == group.title);
 
-                        if (!oldGroup) groups.push(group);
+                        if (!oldGroup) {
+                          const year = group.title.split(' ')[1];
+                          if (group.day > startAt) groups.push(group) 
+                          else groups.unshift(group)
+                        }
                         else oldGroup.value = oldGroup.value + group.value;
 
                         return groups
@@ -128,6 +132,7 @@
 
                       for (let day = dayjs(startAt); day.isBefore(endAt); day = day.add(1, 'month')) {
                         this.insertGroup(orderGroups, {
+                          day: day,
                           title: day.format(format),
                           value: 0
                         })

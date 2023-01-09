@@ -68,7 +68,7 @@
                     <div class="dropdown-list-content dropdown-list-message">
                         <a href="#" class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-avatar">
-                                <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle">
+                                <img alt="image" src="assets/img/avatar/avatar-1.png" class="ratio-1x1 rounded-circle">
                                 <div class="is-online"></div>
                             </div>
                             <div class="dropdown-item-desc">
@@ -79,7 +79,7 @@
                         </a>
                         <a href="#" class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-avatar">
-                                <img alt="image" src="assets/img/avatar/avatar-2.png" class="rounded-circle">
+                                <img alt="image" src="assets/img/avatar/avatar-2.png" class="ratio-1x1 rounded-circle">
                             </div>
                             <div class="dropdown-item-desc">
                                 <b>Dedik Sugiharto</b>
@@ -89,7 +89,7 @@
                         </a>
                         <a href="#" class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-avatar">
-                                <img alt="image" src="assets/img/avatar/avatar-3.png" class="rounded-circle">
+                                <img alt="image" src="assets/img/avatar/avatar-3.png" class="ratio-1x1 rounded-circle">
                                 <div class="is-online"></div>
                             </div>
                             <div class="dropdown-item-desc">
@@ -100,7 +100,7 @@
                         </a>
                         <a href="#" class="dropdown-item">
                             <div class="dropdown-item-avatar">
-                                <img alt="image" src="assets/img/avatar/avatar-4.png" class="rounded-circle">
+                                <img alt="image" src="assets/img/avatar/avatar-4.png" class="ratio-1x1 rounded-circle">
                             </div>
                             <div class="dropdown-item-desc">
                                 <b>Ardian Rahardiansyah</b>
@@ -110,7 +110,7 @@
                         </a>
                         <a href="#" class="dropdown-item">
                             <div class="dropdown-item-avatar">
-                                <img alt="image" src="assets/img/avatar/avatar-5.png" class="rounded-circle">
+                                <img alt="image" src="assets/img/avatar/avatar-5.png" class="ratio-1x1 rounded-circle">
                             </div>
                             <div class="dropdown-item-desc">
                                 <b>Alfa Zulkarnain</b>
@@ -184,7 +184,7 @@
                 </li> -->
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                    <img alt="image" src="https://png.pngtree.com/element_our/sm/20180517/sm_5afd2b1f0ced7.png" class="rounded-circle mr-1">
+                    <img alt="image" src="https://png.pngtree.com/element_our/sm/20180517/sm_5afd2b1f0ced7.png" class="ratio-1x1 rounded-circle mr-1" style="aspect-ratio: 1">
                     <div class="d-sm-none d-lg-inline-block">Hi, Admin</div></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-title">Active</div>

@@ -136,15 +136,15 @@
                                             <form method="post" action="query.php">
                                                 <tr class="">
                                                     <td colspan=""><b>Type</b></td>
-                                                    <td colspan="2">
+                                                    <!-- <td colspan="2">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="type" id="delivery" value="Delivery" required>
                                                             <label class="form-check-label" for="delivery">Delivery</label>
                                                         </div>
-                                                    </td>
+                                                    </td> -->
                                                     <td colspan="">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="type" id="pick-up" value="Pick-Up" required>
+                                                            <input class="form-check-input" type="radio" name="type" id="pick-up" value="Pick-Up" checked required>
                                                             <label class="form-check-label" for="pick-up">Pick-Up</label>
                                                         </div>
                                                     </td>

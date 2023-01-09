@@ -85,7 +85,7 @@ $endAt = !empty($_GET["endAt"]) ? date_create($_GET["endAt"]) : date_create();
                     $cartResults = mysqli_query($con, $cartQuery) or die(mysqli_error($con));
                     $cartResultsJSON = json_encode(mysqli_fetch_all(mysqli_query($con, $cartQuery), MYSQLI_ASSOC));
                     while ($cart = mysqli_fetch_array($cartResults, MYSQLI_ASSOC)) {
-                      if ($cart['cartSTATUS'] == '6') {
+                      if ((int)$cart['cartSTATUS'] >= 5) {
                         $totalSales = (float)$totalSales + ((float)$cart['cartCOUNT'] * (float)$cart['itemPRICE']);
                       }
                     } ?>
@@ -384,7 +384,7 @@ $endAt = !empty($_GET["endAt"]) ? date_create($_GET["endAt"]) : date_create();
               <div class="summary-info bg-success">
 
                 <div class="">Sold <?= $delivered + $pickup; ?> items </div>
-                <div class="d-block mt-2"><a href="#">View All</a></div>
+                <!-- <div class="d-block mt-2"><a href="#">View All</a></div> -->
               </div>
               <div class="summary-item">
                 <h6>Item List <span class="text-muted">(3 Items)</span></h6>

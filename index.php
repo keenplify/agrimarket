@@ -1,5 +1,6 @@
 <?php include('1connection.php'); ?>
 <?php include('1session.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,7 +141,6 @@
 
     <?php include('./knplfy/backtotop.php'); ?>
     <?php include('./knplfy/footer.php'); ?>
-
 </body>
 
 <!-- layout-top-navigation.html  Tue, 07 Jan 2020 03:35:42 GMT -->

@@ -186,7 +186,6 @@ if (isset($_POST['btnregister'])) {
                     '$securityQuestion',
                     '$securityAnswer'
                 ) ");
-        print_r($insertactivitylog1);
         if ($insertactivitylog1) {
             echo "<script type='text/javascript'>window.location.replace('login.php');alert('Successfully Register!')</script>";
         }
@@ -374,7 +373,7 @@ if (isset($_POST['btnupdatesecurity'])) {
         $message = 'You Have Successfully Updated Your Security!';
         $seller = mysqli_query($con, "SELECT * from account where accountID = '$accountID'") or die(mysqli_error($con));
         $rowseller = mysqli_fetch_object($seller);
-        if ($rowseller->sellerpass == $password) {
+        if ($rowseller->pass == $password) {
             $message = 'Updating your security failed, You entered same old password!';
         } else {
             $editprofile = mysqli_query($con, "UPDATE account set 
@@ -547,8 +546,6 @@ if (isset($_POST['btnAddReview'])) {
 
     $query = "UPDATE cart set cartREVIEW='$reviewText', cartREVIEWRATING=$reviewRating WHERE cartID = '$cartID'";
     $update = mysqli_query($con, $query) or die(mysqli_error($con));
-
-    print_r($_POST);
 
     echo "<script type='text/javascript'>window.location.replace('viewprofile.php');alert('Successfully created review. Thank you for reviewing!');</script>";
 }

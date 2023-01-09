@@ -48,7 +48,6 @@
                                             <div class="author-box-job"><?= $row->status ?></div>
                                             <div class="author-box-description">
                                                 <p><b>Phone number: </b><?= $row->mobilenumber ?></p>
-                                                <p><b>Region: </b><?= $row->region ?></p>
                                                 <p><b>Address: </b><?= $row->addresshead ?></p><i style="color: red;">Lat-</i><?php echo $row->lat;  ?><i style="color: red;"> Long-</i><?php echo $row->longi;  ?>
                                             </div>
 
@@ -70,7 +69,7 @@
                                     <div class="card-header">
                                         <h4></h4>
                                         <div class="card-header-action">
-                                            <a href="#" class="btn btn-danger btn-icon icon-right">View All <i class="fas fa-chevron-right"></i></a>
+                                            <!-- <a href="#" class="btn btn-danger btn-icon icon-right">View All <i class="fas fa-chevron-right"></i></a> -->
                                         </div>
                                     </div>
                                     <form method="post" action="query.php">

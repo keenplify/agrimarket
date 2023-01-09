@@ -50,7 +50,7 @@ if (isset($_GET['sellerID']) ? $_GET['sellerID'] : '') {
                   <div class="card-body">
                     <div class="author-box-left">
                       <img alt="image" src="../img/user/<?php if ($rowuser->sellerimage == NULL) { ?>null.png<?php } else {
-                                                                                                              echo $rowuser->sellerimage; ?><?php } ?>" class="rounded-circle author-box-picture">
+                                                                                                              echo $rowuser->sellerimage; ?><?php } ?>" class="ratio-1x1 rounded-circle author-box-picture" style="aspect-ratio: 1;">
                       <div class="clearfix"></div>
                       <a href="#" class="btn btn-primary mt-3"><?php echo $rowuser->sellerSTATUS; ?></a>
                     </div>

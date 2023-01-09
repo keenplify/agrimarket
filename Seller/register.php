@@ -37,7 +37,7 @@ if (isset($_SESSION['seller'])) {
                     <div class="row">
                       <div class="form-group col-6">
                         <label for="frist_name">Profile Image</label><br>
-                        <input type="file" accept="image/*" name="imageupload" id="image-upload" required="" />
+                        <input type="file" accept="image/*" name="imageupload" id="image-upload"/>
                       </div>
                       <div class="form-group col-6">
                         <input type="checkbox" id="is-seasonal" name="isSeasonal">
@@ -151,11 +151,11 @@ if (isset($_SESSION['seller'])) {
 
                 <div id="map" data-height="400" style="display:none"></div>
                 <div id="leaflet_map" style="height:400px"></div>
-                <div class="form-divider">Terms and Conditions</div>
+                <a class="form-divider" href="/termsandconditions.php">Terms and Conditions</a>
                 <div class="form-group">
                   <div class="">
                     <input type="checkbox" id="myCheck" onclick="myFunction()" required="">
-                    <label class="" for="agree">I agree with the terms and conditions</label>
+                    <label class="" for="myCheck">I agree with the terms and conditions</label>
                   </div>
                   <div class="alert alert-success" id="text" style="display:none">
                     I agree that all info here is valid or true. Any wrong information or misused of the system will be block by tehe admin. I agree that the admin will check all the info and wait for few hours for my account to be active.

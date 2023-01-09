@@ -47,7 +47,7 @@ $user=mysqli_query($con,"SELECT * from account where accountID = '$customerID'")
                             <div class="card author-box card-primary">
                                 <div class="card-body">
                                     <div class="author-box-left">
-                                        <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" class="rounded-circle author-box-picture">
+                                        <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" style="aspect-ratio: 1" class="ratio-1x1 rounded-circle author-box-picture">
                                         <div class="clearfix"></div>
                                         <a href="#" class="btn btn-primary mt-3"><?php echo $rowuser->status; ?></a>
                                     </div>
@@ -101,7 +101,7 @@ $user=mysqli_query($con,"SELECT * from account where accountID = '$customerID'")
                                             </div>
                                             <div class="accordion-body collapse bg-light" id="panel-body-1" data-parent="#accordion" >
                                             <center>
-                                                 <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" class="rounded-circle author-box-picture" style="width: 80%;">
+                                                 <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" class="ratio-1x1 rounded-circle author-box-picture" style="width: 80%; aspect-ratio: 1">
                                             </center>
                                             <hr>
                                             <input type="file" name="" disabled="">

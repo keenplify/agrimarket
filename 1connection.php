@@ -17,4 +17,6 @@ $con=mysqli_connect($host,$username,$pass,$db)or die(mysqli_error($con));
 if($con==true){
 
 }
+
+session_start();
 ?>

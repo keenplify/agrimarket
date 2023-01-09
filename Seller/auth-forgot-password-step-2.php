@@ -24,7 +24,7 @@ if (isset($_SESSION['seller'])) {
                 <div class="row">
                     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div class="login-brand">
-                            <a href="/seller/login.php">
+                            <a href="/Seller/login.php">
                                 <img src="/img/banner/logo-white.png" class="mr-3 rounded" style="height:48px; width:auto" src="" alt="product img"> < </a>
                         </div>
                         <div class="card card-primary" style="border: 1px solid;">
@@ -55,7 +55,7 @@ if (isset($_SESSION['seller'])) {
                         <div class="mt-5 text-muted text-center">
                             Don't have an account? <a href="register.php">Create One</a>
                         </div>
-                        <div class="simple-footer">
+                        <div class="simple-footer" style="color:white">
                             Copyright &copy; 2022
                         </div>
                     </div>

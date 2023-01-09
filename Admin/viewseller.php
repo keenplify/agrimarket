@@ -162,7 +162,7 @@ $pickup=0;
                                     <div class="summary-info bg-success">
                                         
                                         <div class="">Sold <?=  $delivered + $pickup; ?> items </div>
-                                        <div class="d-block mt-2"><a href="#">View All</a></div>
+                                        <!-- <div class="d-block mt-2"><a href="#">View All</a></div> -->
                                     </div>
                                     <div class="summary-item">
                                         <h6>Item List <span class="text-muted">(3 Items)</span></h6>

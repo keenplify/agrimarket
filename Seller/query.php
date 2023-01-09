@@ -201,7 +201,7 @@ if (isset($_POST['btnforgotpasswordfinalize'])) {
 
         $editprofile = $editprofile = mysqli_query($con, "UPDATE seller set sellerpass = '$password' WHERE sellerID='$sellerId'") or die(mysqli_error($con));
     }
-    echo "<script type='text/javascript'>window.location.replace('/seller/login.php');alert('$message');</script>";
+    echo "<script type='text/javascript'>window.location.replace('/Seller/login.php');alert('$message');</script>";
 }
 
 if (isset($_POST['btnupdatesecurity'])) {

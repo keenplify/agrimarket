@@ -7,7 +7,7 @@ $sellerID = $_SESSION['seller'];
 
 
      <div class="author-box-left" >
-          <img alt="image" src="../img/user/<?php  if($rowseller->sellerimage==NULL){ ?>null.png<?php } else { echo $rowseller->sellerimage;?><?php } ?>" class="rounded-circle author-box-picture">
+          <img alt="image" src="../img/user/<?php  if($rowseller->sellerimage==NULL){ ?>null.png<?php } else { echo $rowseller->sellerimage;?><?php } ?>" class="ratio-1x1 rounded-circle author-box-picture" style="aspect-ratio: 1;">
               <div class="clearfix"></div>
                   <a href="#" class="btn btn-primary mt-3 follow-btn"><?php echo $rowseller->sellerSTATUS ?></a>
      </div>

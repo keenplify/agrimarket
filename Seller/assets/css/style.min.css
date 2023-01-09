@@ -975,7 +975,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .card.card-hero .card-header {
     padding: 40px;
-    background-image: linear-gradient(to bottom, #236016, #6e4e9e);
+    background-image: linear-gradient(to bottom, #236016, #47b92f);
     color: #fff;
     overflow: hidden;
     height: auto;
@@ -995,7 +995,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .card.card-hero .card-header .card-icon {
     float: right;
-    color: #694a97;
+    color: #5cb85c;
     margin: -60px
 }
 

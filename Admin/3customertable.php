@@ -20,7 +20,7 @@ $count1=0;
                                             <tr>
                                                 <td><?php echo $rowuser->name;?></td>
                                                 <td>
-                                                <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" class="rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
+                                                <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" style="aspect-ratio: 1" class="ratio-1x1 rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
                                                 </td>
                                                 <td><?php echo $rowuser->datecreated;?></td>
                                                 <td>

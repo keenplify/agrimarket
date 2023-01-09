@@ -1,5 +1,7 @@
 <?php include('1connection.php'); ?>
 <?php include('1sessionrequired.php'); ?>
+<?php include('./knplfy/utils.php'); ?>
+
 <?php
 if (isset($_GET['itemid']) ? $_GET['itemid'] : '') {
     $itemid = $_GET['itemid'];
@@ -158,7 +160,7 @@ $rowseller = mysqli_fetch_object($sellers);
                                     ?>
                                         <div class="alert alert-light" role="alert">
                                             <div class="d-flex align-items-center mb-2 alert-heading" style="pointer-events: none;">
-                                                <b class="mr-1"><?= $cart->name ?>'s Rating:</b> 
+                                                <b class="mr-1"><?= asterisks($cart->name) ?>'s Rating:</b> 
                                                 <span class="mr-2"><?= $cart->cartREVIEWRATING?>/5</span>
                                                 <div id='rating-view-<?=$cart->cartID ?>'></div>
                                             </div>

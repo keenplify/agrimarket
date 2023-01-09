@@ -124,7 +124,7 @@
                     </div>
                     </div>
                 </li> -->
-                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+                <!-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
                     <div class="dropdown-menu dropdown-list dropdown-menu-right">
                     <div class="dropdown-header">Notifications
                         <div class="float-right">
@@ -181,7 +181,7 @@
                         <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                     </div>
                     </div>
-                </li>
+                </li> -->
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <img alt="image" src="https://png.pngtree.com/element_our/sm/20180517/sm_5afd2b1f0ced7.png" class="rounded-circle mr-1">

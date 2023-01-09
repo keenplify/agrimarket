@@ -157,7 +157,7 @@
                         </select>
                         <input class="form-control" name="securityAnswer" required placeholder="Your answer">
                     </div>
-                    <div class="form-divider">Terms and Conditions</div>
+                    <a class="form-divider" href="/termsandconditions.php">Terms and Conditions</a>
                     <div class="form-group">
                       <div class="">
                         <input type="checkbox" id="agree" onclick="myFunction()" required="">

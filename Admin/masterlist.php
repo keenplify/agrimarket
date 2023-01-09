@@ -53,8 +53,8 @@
                                                     $count1 = 0;
                                                     $user = mysqli_query($con, "SELECT *  from farmers_masterlist LEFT JOIN category ON category.categoryID=farmers_masterlist.categoryId") or die(mysqli_error($con));
                                                     while ($rowuser = mysqli_fetch_object($user)) {
-                                                        if (empty($rowuser->sellerId)) $status = "UNBINDED";
-                                                        else $status = "<a href='/Admin/viewseller.php?sellerID=$rowuser->sellerId'>BINDED</a>";
+                                                        if (empty($rowuser->sellerId)) $status = "UNUSED";
+                                                        else $status = "<a href='/Admin/viewseller.php?sellerID=$rowuser->sellerId'>USED</a>";
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $rowuser->firstName; ?></td>

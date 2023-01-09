@@ -7,7 +7,7 @@ $adminID = $_SESSION['admin'];
 
 
      <div class="author-box-left" >
-          <img alt="image" src="../img/user/<?php  if($rowadmin->adminimage==NULL){ ?>null.png<?php } else { echo $rowadmin->adminimage;?><?php } ?>" class="rounded-circle author-box-picture">
+          <img alt="image" src="../img/user/<?php  if($rowadmin->adminimage==NULL){ ?>null.png<?php } else { echo $rowadmin->adminimage;?><?php } ?>" style="aspect-ratio: 1" class="ratio-1x1 rounded-circle author-box-picture">
               <div class="clearfix"></div>
                   <a href="#" class="btn btn-primary mt-3 follow-btn"><?php echo $rowadmin->adminSTATUS ?></a>
      </div>

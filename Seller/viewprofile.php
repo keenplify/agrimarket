@@ -46,7 +46,7 @@
                                     <div class="card-body">
                                         <div class="author-box-left">
                                             <img alt="image" src="../img/user/<?php if ($rowseller->sellerimage == NULL) { ?>null.png<?php } else {
-                                                                                                                                    echo $rowseller->sellerimage; ?><?php } ?>" class="rounded-circle author-box-picture">
+                                                                                                                                    echo $rowseller->sellerimage; ?><?php } ?>" class="ratio-1x1 rounded-circle author-box-picture" style="aspect-ratio: 1;">
                                             <div class="clearfix"></div>
                                             <!-- <a href="#" class="btn btn-primary mt-3 follow-btn" data-follow-action="alert('follow clicked');" data-unfollow-action="alert('unfollow clicked');">Follow</a> -->
                                         </div>
@@ -75,7 +75,7 @@
                                     <div class="card-header">
                                         <h4></h4>
                                         <div class="card-header-action">
-                                            <a href="#" class="btn btn-danger btn-icon icon-right">View All <i class="fas fa-chevron-right"></i></a>
+                                            <!-- <a href="#" class="btn btn-danger btn-icon icon-right">View All <i class="fas fa-chevron-right"></i></a> -->
                                         </div>
                                     </div>
                                     <form method="post" action="query.php">

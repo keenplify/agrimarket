@@ -91,7 +91,7 @@
                                                         <td><?php echo $rowuser->sellerfirstname;  ?> <?php echo $rowuser->sellerlastname;  ?></td>
                                                         <td>
                                                             <img alt="image" src="../img/user/<?php if ($rowuser->sellerimage == NULL) { ?>null.png<?php } else {
-                                                                                                                                                    echo $rowuser->sellerimage; ?><?php } ?>" class="rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
+                                                                                                                                                    echo $rowuser->sellerimage; ?><?php } ?>" style="aspect-ratio: 1" class="ratio-1x1 rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
                                                         </td>
                                                         <td><?php echo $rowuser->sellerdatecreated; ?></td>
                                                         <td><?php echo $rowuser->sellerlatitude; ?></td>

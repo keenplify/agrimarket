@@ -37,7 +37,7 @@
                 } else {
                 ?>
                  <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                         <img alt="image" src="img/user/<?= $row->image; ?>" class="rounded-circle mr-1">
+                         <img alt="image" src="img/user/<?= $row->image; ?>" class="ratio-1x1 rounded-circle mr-1" style="aspect-ratio: 1">
                          <div class="d-sm-none d-lg-inline-block">Hi, <?= $row->name; ?></div>
                      </a>
                      <div class="dropdown-menu dropdown-menu-right">
@@ -62,9 +62,9 @@
              <li class="nav-item ">
                  <a href="shop.php" class="nav-link"><i class="far fa-heart"></i><span>Shop</span></a>
              </li>
-             <li class="nav-item ">
+             <!-- <li class="nav-item ">
                  <a href="notification.php" class="nav-link"><i class="far fa-bell"></i><span>Notification</span></a>
-             </li>
+             </li> -->
              <!--  <li class="nav-item ">
                         <a href="messages.php" class="nav-link"><i class="far fa-envelope"></i><span>Messages</span></a>
                     </li> -->

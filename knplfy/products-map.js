@@ -41,7 +41,7 @@ async function initializeLeaflet({ latitude, longitude }) {
         for (const product of products) {
           productsHTML += `
           <div class="card card-block mx-2" style="width: 156px; height: 254px;">
-            <div class="ratio ratio-1x1 w-100 h-100 position-relative">
+            <div class="ratio ratio-1x1 w-100 h-100 position-relative" style="aspect-ratio: 1;">
               <img class="w-100 h-100 position-absolute top-50 start-50 translate-middle" src="/img/product/${product.itemIMG}">
             </div>
             <div class="card-body">
