@@ -3,11 +3,11 @@
  
 /* Database Config */
 //host
-$host="sql605.main-hosting.eu";
+$host="agrimarket.store";
 //username
 $username="u941863348_agrimarket";
 //password
-$pass="5mJL4pSSeBRDe";
+$pass="3c49JR9uI#";
 //database name
 $db="u941863348_agrimarket";	
 
