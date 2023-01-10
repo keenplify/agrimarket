@@ -308,12 +308,14 @@
             <form id="" action="query.php" method="post" enctype="multipart/form-data">
 
                 <div class="modal-body ">
-                    <label for="inputEmail4">Name</label>
-                    <input type="text" class="form-control" id="" name="name">
+                    <label for="inputEmail4">First Name</label>
+                    <input type="text" class="form-control" id="" name="firstName" value="<?= $rowseller->sellerfirstname ?>">
+                    <label for="inputEmail4">Last Name</label>
+                    <input type="text" class="form-control" id="" name="lastName" value="<?= $rowseller->sellerlastname ?>">
                     <label for="inputEmail4">Mobile Number</label>
-                    <input type="text" class="form-control" id="" name="number">
+                    <input type="text" class="form-control" id="" name="number"  value="<?= $rowseller->sellermobilenumber ?>">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="" name="email">
+                    <input type="email" class="form-control" id="" name="email" value="<?= $rowseller->selleremail ?>">
                     <input type="text" class="form-control" id="sellerID" name="sellerID" required="" value="<?php echo $rowseller->sellerID; ?>" hidden>
                 </div>
 

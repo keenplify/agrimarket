@@ -1,7 +1,7 @@
 <?php
 include('1connection.php');
 include('./knplfy/utils.php');
-mysqli_report(MYSQLI_REPORT_ALL);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 if (isset($_POST['btnlogin'])) {
 
@@ -22,11 +22,11 @@ if (isset($_POST['btnlogin'])) {
 }
 
 if (isset($_POST['btnaddtocart'])) {
-    $quant = $_POST['quant'];
-    $itemID = $_POST['itemID'];
-    $accountID = $_POST['accountID'];
-    $sellerID = $_POST['sellerID'];
-    $visitorID = $_POST['visitorId'];
+    $quant = trim($_POST['quant']);
+    $itemID = trim($_POST['itemID']);
+    $accountID = trim($_POST['accountID']);
+    $sellerID = trim($_POST['sellerID']);
+    $visitorID = trim($_POST['visitorId']);
     date_default_timezone_set('Asia/Manila');
     $date = date('F d, Y h:i:sa', time());
 

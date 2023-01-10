@@ -22,7 +22,7 @@ if (isset($_SESSION['seller'])) {
             <div class="login-brand">
               <a href="/">
                 <img src="/img/banner/logo-white.png" class="mr-3 rounded" style="height:48px; width:auto" src="" alt="product img">
-                < </a>
+                </a>
             </div>
             <div class="card card-primary" style="border: 1px solid;">
               <div class="card-header">

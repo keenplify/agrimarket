@@ -1,6 +1,6 @@
 <?php include('../1connection.php'); ?>
 <?php
-mysqli_report(MYSQLI_REPORT_ALL);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 if (isset($_POST['deactivethis'])) {
 

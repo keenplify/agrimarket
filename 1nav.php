@@ -62,9 +62,9 @@
              <li class="nav-item ">
                  <a href="shop.php" class="nav-link"><i class="far fa-heart"></i><span>Shop</span></a>
              </li>
-             <!-- <li class="nav-item ">
+             <li class="nav-item ">
                  <a href="notification.php" class="nav-link"><i class="far fa-bell"></i><span>Notification</span></a>
-             </li> -->
+             </li>
              <!--  <li class="nav-item ">
                         <a href="messages.php" class="nav-link"><i class="far fa-envelope"></i><span>Messages</span></a>
                     </li> -->
