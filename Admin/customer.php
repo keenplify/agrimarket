@@ -70,14 +70,14 @@ $count1=0;
                                             <tr>
                                                 <td><?php echo $rowuser->name;?></td>
                                                 <td>
-                                                <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" style="aspect-ratio: 1" class="ratio-1x1 rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
+                                                <img alt="image" src="../img/user/<?php  if($rowuser->image==NULL){ ?>null.png<?php } else { echo $rowuser->image;?><?php } ?>" style="aspect-ratio: 1" class="ratio-1x1 rounded-circle" width="35" data-toggle="tooltip" title="<?= $rowuser->name ?>">
                                                 </td>
                                                 <td><?php echo $rowuser->datecreated;?></td>
                                                 <td>
-                                                    <?php if($rowuser->status=="active"){?>
-                                                    <div class="badge badge-success">Active</div>
-                                                    <?php }else{?>
+                                                    <?php if($rowuser->status=="blocked"){?>
                                                     <div class="badge badge-danger">Block</div>
+                                                    <?php }else{?>
+                                                    <div class="badge badge-success">Active</div>
                                                     <?php } ?>
                                                 </td>
                                                 <td><a href="viewcustomer.php?customerID=<?php echo $rowuser->accountID;?>" class="btn btn-secondary">View</a></td>

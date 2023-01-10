@@ -86,7 +86,7 @@
                                                             <td>
                                                                 <img alt="image" src="../img/user/<?php if ($rowuser->sellerimage == NULL) { ?>null.png<?php } else {
                                                                                                                                                     echo $rowuser->sellerimage; ?><?php } ?>" class="ratio-1x1 rounded-circle" width="35" 
-                                                                                                                                                    style="aspect-ratio: 1" data-toggle="tooltip" title="Wildan Ahdian">
+                                                                                                                                                    style="aspect-ratio: 1" data-toggle="tooltip" title="<?= $rowuser->sellerfirstname ?>">
                                                             </td>
                                                             <td><?php echo $rowuser->sellerdatecreated; ?></td>
                                                             <td><?php echo $rowuser->sellerlatitude; ?></td>
