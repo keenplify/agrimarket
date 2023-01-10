@@ -1,6 +1,8 @@
 
 <?php include('../1connection.php'); ?>
 <?php
+mysqli_report(MYSQLI_REPORT_ALL);
+
 if (isset($_POST['updateimage'])) {
 
     $sellerID = $_POST['sellerID'];

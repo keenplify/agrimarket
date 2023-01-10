@@ -1,5 +1,7 @@
 <?php include('../1connection.php'); ?>
 <?php
+mysqli_report(MYSQLI_REPORT_ALL);
+
 if (isset($_POST['deactivethis'])) {
 
     $accountID = $_POST['accountid'];

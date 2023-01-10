@@ -1,6 +1,7 @@
 <?php
 include('1connection.php');
 include('./knplfy/utils.php');
+mysqli_report(MYSQLI_REPORT_ALL);
 
 if (isset($_POST['btnlogin'])) {
 
@@ -188,6 +189,8 @@ if (isset($_POST['btnregister'])) {
                 ) ");
         if ($insertactivitylog1) {
             echo "<script type='text/javascript'>window.location.replace('login.php');alert('Successfully Register!')</script>";
+        } else {
+            echo "<script type='text/javascript'>window.location.replace('register.php');alert('Unable to register. Please try again.')</script>";
         }
     } catch (Exception $e) {
         $message = $e->getMessage();
