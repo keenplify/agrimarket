@@ -147,7 +147,7 @@ if (isset($_POST['btneditprofile'])) {
     date_default_timezone_set('Asia/Manila');
     $txtdate = date('F d, Y h:i:sa', time());
 
-    if (empty($name) || empty($number) || empty($email) || empty($sellerID)) {
+    if (empty($firstName) || empty($lastName) || empty($number) || empty($email) || empty($sellerID)) {
         $message = 'Updating profile info failed, Some Info is Missing!';
     } else {
 
