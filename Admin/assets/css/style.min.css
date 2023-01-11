@@ -4338,7 +4338,23 @@ body:not(.sidebar-mini) .sidebar-style-3 .sidebar-menu li.active ul.dropdown-men
     }
 }
 
+.nav-logo-white {
+    display: initial !important
+}
+
+.nav-logo-black {
+    display: none !important
+}
+
 @media (max-width: 1200px) {
+    .nav-logo-white {
+        display: none !important
+    }
+
+    .nav-logo-black {
+        display: initial !important
+    }
+
     .sidebar-gone-hide {
         display: none !important
     }

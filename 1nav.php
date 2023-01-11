@@ -1,6 +1,9 @@
  <nav class="navbar navbar-expand-lg main-navbar">
      <div class="container">
-         <a href="index.php" class="navbar-brand sidebar-gone-hide"><img src="img/banner/logo-white.png" style="width: 200px;"></a>
+        <a href="index.php" class="navbar-brand sidebar-gone-hide">
+            <img src="img/banner/logo-white.png" style="width: 200px;" class="nav-logo-white">
+            <img src="img/banner/logo-black.png" style="width: 200px;" class="nav-logo-black">
+        </a>
          <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
          <div class="nav-collapse">
              <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#"><i class="fas fa-ellipsis-v"></i></a>
@@ -28,8 +31,6 @@
              </div>
          </form>
          <ul class="navbar-nav navbar-right">
-
-
              <?php if (!isset($_SESSION['account'])) {
                 ?>
                  <a href="login.php" class="btn btn-success" style="margin-left:15em;">Login</a>
@@ -58,7 +59,6 @@
  <nav class="navbar navbar-secondary navbar-expand-lg">
      <div class="container">
          <ul class="navbar-nav">
-
              <li class="nav-item ">
                  <a href="shop.php" class="nav-link"><i class="far fa-heart"></i><span>Shop</span></a>
              </li>

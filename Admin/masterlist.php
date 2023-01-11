@@ -34,6 +34,25 @@
                             <div class="col-12">
 
                                 <div class="card">
+                                    <div class="card-header">
+                                        <h4></h4>
+                                        <div class="card-header-form">
+                                            <form class="d-flex" method="get">
+                                                <select
+                                                    class="form-select rounded mr-3"
+                                                    onchange="this.form.submit()"
+                                                    id="municipality-filter"
+                                                    name="city"
+                                                >
+                                                    <option value="all">No Municipality Filter</option>
+                                                    <?php
+                                                    $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+                                                    include "$root/components/municipalities-options.php";
+                                                    ?>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table table-striped v_center">
@@ -51,7 +70,10 @@
                                                 <tbody>
                                                     <?php
                                                     $count1 = 0;
-                                                    $user = mysqli_query($con, "SELECT *  from farmers_masterlist LEFT JOIN category ON category.categoryID=farmers_masterlist.categoryId") or die(mysqli_error($con));
+                                                    $query = "SELECT * from farmers_masterlist LEFT JOIN category ON category.categoryID=farmers_masterlist.categoryId";
+                                                    $city = $_GET['city'];
+                                                    if (isset($city) && $city !== 'all  ') $query = $query . " WHERE municipality='". $city ."'";
+                                                    $user = mysqli_query($con, $query) or die(mysqli_error($con));
                                                     while ($rowuser = mysqli_fetch_object($user)) {
                                                         if (empty($rowuser->sellerId)) $status = "UNUSED";
                                                         else $status = "<a href='/Admin/viewseller.php?sellerID=$rowuser->sellerId'>USED</a>";
@@ -153,6 +175,10 @@
     <!-- Template JS File -->
     <script src="js/scripts.js"></script>
     <script src="js/custom.js"></script>
+    
+    <script defer>
+        document.querySelector("#municipality-filter").value = `<?= $_GET["city"] ?>`
+    </script>
 </body>
 
 </html>

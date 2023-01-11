@@ -60,7 +60,7 @@ $itemlist=mysqli_query($con,"SELECT * from item where itemID = '$itemid'")or die
                                     </div>
                                     </center>
                                     <hr>
-                                            <div class="gallery " style=" margin:10px;">
+                                            <!-- <div class="gallery " style=" margin:10px;">
                                                  <center>
                                                 <div class="gallery-item" data-image="assets/img/example-image.jpg" data-title="Image 1"  style="border:solid black 1px;"></div>
                                                 <div class="gallery-item" data-image="assets/img/example-image.jpg" data-title="Image 2" style="border:solid black 1px;"></div>
@@ -71,7 +71,7 @@ $itemlist=mysqli_query($con,"SELECT * from item where itemID = '$itemid'")or die
                                                 <div class="gallery-item" data-image="assets/img/example-image.jpg" data-title="Image 7" style="border:solid black 1px;"></div>
                                                 <div class="gallery-item" data-image="assets/img/example-image.jpg" data-title="Image 8"  style="border:solid black 1px;"></div>
                                                  </center>
-                                            </div>
+                                            </div> -->
 
                                     </div>
                                     
