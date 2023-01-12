@@ -574,11 +574,7 @@ if (isset($_POST['btncancel'])) {
         $notification = 'Your order ID' . $orderID . 'is change the status by you to Order Cancelled!';
 
 
-        $update = mysqli_query($con, "UPDATE cart set 
-                cartSTATUS = '6',
-            WHERE 
-                orderID='$orderID' 
-            ") or die(mysqli_error($con));
+        $update = mysqli_query($con, "UPDATE cart set cartSTATUS = '6' WHERE orderID='$orderID'") or die(mysqli_error($con));
     }
 
     if ($update) {
