@@ -23,7 +23,7 @@ if (isset($_POST["email"]) && isset($_POST["securityQuestion"]) && isset($_POST[
         $id = $seller['sellerID'];
         header("Location: ./auth-forgot-password-step-2.php?id=$id");
     } else {
-        echo "<script>alert('User not found')</script>";
+        echo "<script>alert('Username and Password does not match')</script>";
     }
 }
 ?>

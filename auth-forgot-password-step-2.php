@@ -29,7 +29,7 @@ if (isset($_POST["user"]) && isset($_POST["securityQuestion"]) && isset($_POST["
         $id = $account['accountID'];
         header("Location: /");
     } else {
-        echo "<script>alert('User not found')</script>";
+        echo "<script>alert('Username and Password does not match')</script>";
     }
 }
 ?>

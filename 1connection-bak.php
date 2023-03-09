@@ -3,13 +3,13 @@
  
 /* Database Config */
 //host
-$host="127.0.0.1";
+$host="agrimarket.store";
 //username
-$username="root";
+$username="u941863348_agrimarket";
 //password
-$pass="*8*S5Kz2drNc";
+$pass="3c49JR9uI#";
 //database name
-$db="geofarmer";	
+$db="u941863348_agrimarket";	
 
 /* End Config */
 
